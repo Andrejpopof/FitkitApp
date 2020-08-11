@@ -1,0 +1,94 @@
+﻿@model FitKitApp.Models.User
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h3>Детали за корисник @Model.FullName</h3>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Ime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Ime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Prezime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Prezime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BirthDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BirthDate)
+        </dd>
+        <dt class="col-sm-2">
+            Години
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Age
+        </dd>
+        @*<dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ProfilePic)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ProfilePic)
+        </dd>*@
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Visina)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Visina)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tezina)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tezina)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ObemGradi)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ObemGradi)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ObemLevBiceps)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ObemLevBiceps)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ObemDesenBiceps)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ObemDesenBiceps)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ObemStruk)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ObemStruk)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ObemLevBut)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ObemLevBut)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ObemDesenBut)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ObemDesenBut)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Промени неделни мерки</a> |
+</div>

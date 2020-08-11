@@ -1,0 +1,65 @@
+﻿@model FitKitApp.Models.Objekt
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Детали за oбјект: @ViewData["imeObjekt"]</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ime)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ime)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Kvadratura)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Kvadratura)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Lokacija)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Lokacija)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MaxClients)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MaxClients)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TipVezbanje)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TipVezbanje)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.OtvorZatvor)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.OtvorZatvor)
+        </dd>
+        <dt class = "col-sm-2">
+            Прв Тренер
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Coach1.FullName)
+        </dd>
+        <dt class = "col-sm-2">
+            Втор Тренер
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Coach2.FullName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

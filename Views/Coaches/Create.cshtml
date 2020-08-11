@@ -1,0 +1,68 @@
+﻿@model FitKitApp.Models.Coach
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Coach</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Ime" class="control-label"></label>
+                <input asp-for="Ime" class="form-control" />
+                <span asp-validation-for="Ime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prezime" class="control-label"></label>
+                <input asp-for="Prezime" class="form-control" />
+                <span asp-validation-for="Prezime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Visina" class="control-label"></label>
+                <input asp-for="Visina" class="form-control" />
+                <span asp-validation-for="Visina" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tezina" class="control-label"></label>
+                <input asp-for="Tezina" class="form-control" />
+                <span asp-validation-for="Tezina" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BirthDate" class="control-label"></label>
+                <input asp-for="BirthDate" class="form-control" />
+                <span asp-validation-for="BirthDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Plata" class="control-label"></label>
+                <input asp-for="Plata" class="form-control" />
+                <span asp-validation-for="Plata" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Profilna" class="control-label"></label>
+                <input asp-for="Profilna" class="form-control" />
+                <span asp-validation-for="Profilna" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EducationLevel" class="control-label"></label>
+                <input asp-for="EducationLevel" class="form-control" />
+                <span asp-validation-for="EducationLevel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

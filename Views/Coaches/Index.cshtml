@@ -1,0 +1,79 @@
+﻿@model FitKitApp.ViewModels.CoachSearchViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Инструктори</h1>
+
+<p>
+    <a asp-action="Create">Додади нов инструктор</a>
+</p>
+<form asp-controller="Coaches" asp-action="Index" method="get">
+    <p>
+        Име: <input type="text" asp-for="searchStringImeCoach" />
+
+        Презиме: <input type="text" asp-for="searchStringPrezimeCoach"/>
+        <input type="submit" value="Барај" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Coaches[0].Ime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Coaches[0].Prezime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Coaches[0].Visina)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Coaches[0].Tezina)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Coaches[0].BirthDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Coaches[0].Plata)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Coaches[0].EducationLevel)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Coaches) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prezime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Visina)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tezina)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BirthDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Plata)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EducationLevel)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Промени</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Детали</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Избриши</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

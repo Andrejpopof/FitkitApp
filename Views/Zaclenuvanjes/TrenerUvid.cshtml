@@ -1,0 +1,56 @@
+﻿@model IEnumerable<FitKitApp.Models.Zaclenuvanje>
+
+@{
+    ViewData["Title"] = "TrenerUvid";
+}
+    <h2>Тренер: @ViewData["imeTrener"] </h2>
+    <h4><a asp-controller="Coaches" asp-action="Details" asp-route-id=@ViewData["idTrener"]>Увид во вашите детали</a></h4> 
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Objekt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Termin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OdobrenNeodobren)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            if (item.OdobrenNeodobren == null)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Objekt.Ime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Termin)
+                    </td>
+                    @{
+                        if (item.OdobrenNeodobren == null)
+                        {
+                            <td><a asp-action="EditOdobriOdbijTermin" asp-route-id="@item.Id">Одобри/Одбиј барање за термин</a></td>
+                        }
+                        else
+                        {
+                        }
+                    }
+                </tr>
+
+            }
+
+        }
+    </tbody>
+</table>

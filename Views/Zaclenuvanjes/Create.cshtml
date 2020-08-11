@@ -1,0 +1,45 @@
+﻿@model FitKitApp.Models.Zaclenuvanje
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h3>Барање за термин</h3>
+<h5>Корисник: @ViewData["imeKorisnik"]</h5>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label">Корисник</label>
+                <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ObjektId" class="control-label">Објект</label>
+                <select asp-for="ObjektId" class="form-control" asp-items="ViewBag.ObjektId" ></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Termin" class="control-label"></label>
+                <input asp-for="Termin" class="form-control" />
+                <span asp-validation-for="Termin" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="OdobrenNeodobren" class="control-label"></label>
+                <input asp-for="OdobrenNeodobren" class="form-control" />
+                <span asp-validation-for="OdobrenNeodobren" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,61 @@
+﻿@model IEnumerable<FitKitApp.Models.Zaclenuvanje>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Термини за корисник: @ViewData["imeKorisnik"]</h2>
+<td>
+    <a asp-action="CreateTerminKorisnik" asp-route-id=@ViewData["idKorisnik"]>ПОДНЕСИ БАРАЊЕ ЗА ТЕРМИН</a> |
+    <a asp-controller="Users" asp-action="Edit" asp-route-id=@ViewData["idKorisnik"]>ВНЕСИ НЕДЕЛНИ МЕРЕЊА</a> |
+    <a asp-controller="Users" asp-action="Details" asp-route-id=@ViewData["idKorisnik"]>УВИД ВО ОБЕМИ</a>
+</td>
+<br>
+<br>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Objekt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Termin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OdobrenNeodobren)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Objekt.Ime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Termin)
+                </td>
+
+                @{
+                    if (item.OdobrenNeodobren == null)
+                    {
+                        <td>Барањето се процесира...</td>
+                    }
+                    else
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OdobrenNeodobren)
+                        </td>
+                    }
+                }
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Промени</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Избриши</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

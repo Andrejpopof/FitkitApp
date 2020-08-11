@@ -1,0 +1,69 @@
+﻿@model FitKitApp.Models.Objekt
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Објект</h1>
+
+<h4>Промени информации за објект </h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Ime" class="control-label"></label>
+                <input asp-for="Ime" class="form-control" readonly />
+                <span asp-validation-for="Ime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Kvadratura" class="control-label"></label>
+                <input asp-for="Kvadratura" class="form-control" />
+                <span asp-validation-for="Kvadratura" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lokacija" class="control-label"></label>
+                <input asp-for="Lokacija" class="form-control" />
+                <span asp-validation-for="Lokacija" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaxClients" class="control-label"></label>
+                <input asp-for="MaxClients" class="form-control" />
+                <span asp-validation-for="MaxClients" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipVezbanje" class="control-label"></label>
+                <input asp-for="TipVezbanje" class="form-control" />
+                <span asp-validation-for="TipVezbanje" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OtvorZatvor" class="control-label"></label>
+                <input asp-for="OtvorZatvor" class="form-control" />
+                <span asp-validation-for="OtvorZatvor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Coach1Id" class="control-label">Прв Тренер</label>
+                <select asp-for="Coach1Id" class="form-control" asp-items="ViewBag.Coach1Id"></select>
+                <span asp-validation-for="Coach1Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Coach2Id" class="control-label">Втор Тренер</label>
+                <select asp-for="Coach2Id" class="form-control" asp-items="ViewBag.Coach2Id"></select>
+                <span asp-validation-for="Coach2Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
