@@ -1,4 +1,4 @@
-﻿@model IEnumerable<FitKitApp.Models.User>
+﻿@model FitKitApp.ViewModels.KorisniciSearchViewModel
 
 @{
     ViewData["Title"] = "Index";
@@ -9,26 +9,35 @@
 <p>
     <a asp-action="Create">Креирај Нов</a>
 </p>
+<form asp-controller="Users" asp-action="Index" method="get">
+    <p>
+        Име: <input type="text" asp-for="searchStringImeKorisnik" />
+
+        Презиме: <input type="text" asp-for="searchStringPrezimeKorisnik"/> 
+        
+        <input type="submit" value="Барај" />
+    </p>
+</form>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Ime)
+                @Html.DisplayNameFor(model => model.Users[0].Ime)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Prezime)
+                @Html.DisplayNameFor(model => model.Users[0].Prezime)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BirthDate)
+                @Html.DisplayNameFor(model => model.Users[0].BirthDate)
             </th>
             <th hidden>
-                @Html.DisplayNameFor(model => model.ProfilePic)
+                @Html.DisplayNameFor(model => model.Users[0].ProfilePic)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Visina)
+                @Html.DisplayNameFor(model => model.Users[0].Visina)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Tezina)
+                @Html.DisplayNameFor(model => model.Users[0].Tezina)
             </th>
             <th>
                 Обеми(мерки)
@@ -37,7 +46,7 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.Users) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Ime)

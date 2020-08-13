@@ -9,6 +9,7 @@ using FitKitApp.Data;
 using FitKitApp.Models;
 using System.Collections.Immutable;
 using FitKitApp.ViewModels;
+using SQLitePCL;
 
 namespace FitKitApp.Controllers
 {
@@ -241,32 +242,60 @@ namespace FitKitApp.Controllers
         }
 
 
-        public async Task<IActionResult> KorisnikUvid(int? id)
+        public async Task<IActionResult> KorisnikUvid(int? id, string searchStringImeObjekt)
         {
             if(id== null )
             {
                 return NotFound();
             }
 
+            IQueryable<Zaclenuvanje> zaclenuvanjes = _context.Zaclenuvanje.AsQueryable();
+
+            if (!string.IsNullOrEmpty(searchStringImeObjekt))
+            {
+                zaclenuvanjes = zaclenuvanjes.Where(i => i.Objekt.Ime.Contains(searchStringImeObjekt));
+            }
+
             var korisnici = _context.User.Where(s => s.Id == id).FirstOrDefault();
             ViewData["imeKorisnik"] = korisnici.FullName;
             ViewData["idKorisnik"] = id;
 
-            var enrollments = _context.Zaclenuvanje.Where(s => s.UserId == id).Include(s => s.Objekt);
-            return View(enrollments);
+            zaclenuvanjes = zaclenuvanjes.Where(s => s.UserId == id).Include(s => s.Objekt);
+
+            var korisnikImeObjekt = new KorisnikImeObjektSeachViewModel
+            {
+                Zaclenuvanjes = await zaclenuvanjes.ToListAsync()
+            };
+            return View(korisnikImeObjekt);
         }
 
-        public async Task<IActionResult> TrenerUvid(int? id)
+        public async Task<IActionResult> TrenerUvid(int? id, string searchStringObjekt)
         {
             if (id == null)
                 return NotFound();
+
+            IQueryable<Zaclenuvanje> zaclenuvanjes = _context.Zaclenuvanje.Where(s => s.Objekt.Coach1Id == id || s.Objekt.Coach2Id == id).AsQueryable();
+            if(!string.IsNullOrEmpty(searchStringObjekt))
+            {
+                zaclenuvanjes = zaclenuvanjes.Where(s => s.Objekt.Ime.Contains(searchStringObjekt));
+            }
+
+
+            zaclenuvanjes = zaclenuvanjes.Include(s => s.User).Include(s => s.Objekt);
+
             var trener = _context.Coach.Where(m => m.Id == id).FirstOrDefault();
             ViewData["imeTrener"] = trener.FullName;
             ViewData["idTrener"] = trener.Id;
             TempData["idTrenerTemp"] = trener.Id;
             TempData.Keep();
-            var enrollments = _context.Zaclenuvanje.Where(s => s.Objekt.Coach1Id == id || s.Objekt.Coach2Id == id).Include(s => s.User).Include(s=>s.Objekt);
-            return View(enrollments);
+            var trenerUvidVM = new TrenerUvidObjektViewModel
+            {
+                Termini =await zaclenuvanjes.ToListAsync()
+               
+            };
+
+           // var enrollments = _context.Zaclenuvanje.Where(s => s.Objekt.Coach1Id == id || s.Objekt.Coach2Id == id).Include(s => s.User).Include(s=>s.Objekt);
+            return View(trenerUvidVM);
         }
 
         private bool ZaclenuvanjeExists(int id)

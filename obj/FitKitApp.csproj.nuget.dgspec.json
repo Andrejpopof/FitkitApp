@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Andrej\\source\\repos\\FitKitApp\\FitKitApp.csproj": {}
+    "C:\\Users\\Andrej\\Desktop\\FitKit_final\\FitkitApp\\FitKitApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Andrej\\source\\repos\\FitKitApp\\FitKitApp.csproj": {
+    "C:\\Users\\Andrej\\Desktop\\FitKit_final\\FitkitApp\\FitKitApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Andrej\\source\\repos\\FitKitApp\\FitKitApp.csproj",
+        "projectUniqueName": "C:\\Users\\Andrej\\Desktop\\FitKit_final\\FitkitApp\\FitKitApp.csproj",
         "projectName": "FitKitApp",
-        "projectPath": "C:\\Users\\Andrej\\source\\repos\\FitKitApp\\FitKitApp.csproj",
+        "projectPath": "C:\\Users\\Andrej\\Desktop\\FitKit_final\\FitkitApp\\FitKitApp.csproj",
         "packagesPath": "C:\\Users\\Andrej\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Andrej\\source\\repos\\FitKitApp\\obj\\",
+        "outputPath": "C:\\Users\\Andrej\\Desktop\\FitKit_final\\FitkitApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Andrej\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -54,7 +54,7 @@
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[3.1.3, )"
+              "version": "[3.1.4, )"
             }
           },
           "imports": [

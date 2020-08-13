@@ -1,10 +1,11 @@
-﻿@model IEnumerable<FitKitApp.Models.Zaclenuvanje>
+﻿@model FitKitApp.ViewModels.KorisnikImeObjektSeachViewModel
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h2>Термини за корисник: @ViewData["imeKorisnik"]</h2>
+    <h2 style="border: 2px solid crimson">Термини за корисник: @ViewData["imeKorisnik"]</h2>
+
 <td>
     <a asp-action="CreateTerminKorisnik" asp-route-id=@ViewData["idKorisnik"]>ПОДНЕСИ БАРАЊЕ ЗА ТЕРМИН</a> |
     <a asp-controller="Users" asp-action="Edit" asp-route-id=@ViewData["idKorisnik"]>ВНЕСИ НЕДЕЛНИ МЕРЕЊА</a> |
@@ -12,24 +13,30 @@
 </td>
 <br>
 <br>
+<form asp-controller="Zaclenuvanjes" asp-action="KorisnikUvid" method="get">
+<p>
+    Име на објект: <input type="text" asp-for="searchStringImeObjekt" />
+    <input type="submit" value="Барај термин" />
+</p>
+</form>
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Objekt)
+                @Html.DisplayNameFor(model => model.Zaclenuvanjes[0].Objekt)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Termin)
+                @Html.DisplayNameFor(model => model.Zaclenuvanjes[0].Termin)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OdobrenNeodobren)
+                @Html.DisplayNameFor(model => model.Zaclenuvanjes[0].OdobrenNeodobren)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.Zaclenuvanjes)
         {
             <tr>
                 <td>

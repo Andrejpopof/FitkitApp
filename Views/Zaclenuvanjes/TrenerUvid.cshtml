@@ -1,30 +1,37 @@
-﻿@model IEnumerable<FitKitApp.Models.Zaclenuvanje>
+﻿@model FitKitApp.ViewModels.TrenerUvidObjektViewModel
 
 @{
     ViewData["Title"] = "TrenerUvid";
 }
     <h2>Тренер: @ViewData["imeTrener"] </h2>
     <h4><a asp-controller="Coaches" asp-action="Details" asp-route-id=@ViewData["idTrener"]>Увид во вашите детали</a></h4> 
+
+   <form asp-controller="Zaclenuvanjes" asp-action="TrenerUvid" method="get">
+        <p>
+            Име на објект: <input type="text" asp-for="searchStringImeObjekt" />
+            <input type="submit" value="Барај Термини" />
+        </p>
+    </form>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Objekt)
+                @Html.DisplayNameFor(model => model.Termini[0].Objekt)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.User)
+                @Html.DisplayNameFor(model => model.Termini[0].User)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Termin)
+                @Html.DisplayNameFor(model => model.Termini[0].Termin)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OdobrenNeodobren)
+                @Html.DisplayNameFor(model => model.Termini[0].OdobrenNeodobren)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.Termini)
         {
             if (item.OdobrenNeodobren == null)
             {

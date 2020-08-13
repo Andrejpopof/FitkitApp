@@ -52,6 +52,8 @@ namespace FitKitApp.Controllers
             }
 
             var coach = await _context.Coach
+                .Include(s => s.Objekti1)
+                .Include(s => s.Objekti2)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (coach == null)
             {

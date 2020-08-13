@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FitKitApp.Data;
 using FitKitApp.Models;
+using Microsoft.AspNetCore.Identity;
+using FitKitApp.ViewModels;
 
 namespace FitKitApp.Controllers
 {
@@ -20,9 +22,24 @@ namespace FitKitApp.Controllers
         }
 
         // GET: Users
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchStringImeKorisnik, string seachStringPrezmieKorisnik)
         {
-            return View(await _context.User.ToListAsync());
+            IQueryable<User> users = _context.User.AsQueryable();
+
+            if(!string.IsNullOrEmpty(searchStringImeKorisnik))
+            {
+                users = users.Where(s => s.Ime.Contains(searchStringImeKorisnik));
+            }
+            if(!string.IsNullOrEmpty(seachStringPrezmieKorisnik))
+            {
+                users = users.Where(k => k.Prezime.Contains(seachStringPrezmieKorisnik));
+            }
+
+            var korisnicSearchVM = new KorisniciSearchViewModel
+            {
+                Users = await users.ToListAsync()
+            };
+            return View(korisnicSearchVM);
         }
 
         // GET: Users/Details/5

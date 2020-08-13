@@ -28,6 +28,20 @@ namespace FitKitApp
             services.AddControllersWithViews();
             services.AddDbContext<FitKitAppContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("FitKitAppContext")));
+
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
+
+
+            services.AddMvc()
+             .AddJsonOptions(x =>
+             {
+                 x.JsonSerializerOptions.WriteIndented = true;
+             });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +61,8 @@ namespace FitKitApp
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthorization();
 
