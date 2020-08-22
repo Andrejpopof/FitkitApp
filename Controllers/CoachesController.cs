@@ -9,9 +9,11 @@ using FitKitApp.Data;
 using FitKitApp.Models;
 using Microsoft.CodeAnalysis.FlowAnalysis;
 using FitKitApp.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FitKitApp.Controllers
 {
+    [Authorize(Roles="Admin")]
     public class CoachesController : Controller
     {
         private readonly FitKitAppContext _context;

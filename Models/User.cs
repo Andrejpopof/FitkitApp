@@ -48,6 +48,7 @@ namespace FitKitApp.Models
             }
         }
 
+
         public string ProfilePic { get; set; }
 
         [Display(Name = "Висина(cm)")]

@@ -2,48 +2,60 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FitKitApp.Data;
 using FitKitApp.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FitKitApp.Controllers
 {
+
+   
     public class AdminController : Controller
     {
         private UserManager<AppUser> userManager;
         private IPasswordHasher<AppUser> passwordHasher;
+        private IPasswordValidator<AppUser> passwordValidator;
+        private IUserValidator<AppUser> userValidator;
+        private readonly FitKitAppContext _context;
 
 
-        public AdminController(UserManager<AppUser> usrMgr, IPasswordHasher<AppUser>passwordHash)
+        public AdminController(UserManager<AppUser> usrMgr, IPasswordHasher<AppUser>passwordHash, IPasswordValidator<AppUser> passwordVal, IUserValidator<AppUser>
+userValid, FitKitAppContext context)
         {
             userManager = usrMgr;
             passwordHasher = passwordHash;
+            passwordValidator = passwordVal;
+            userValidator = userValid;
+            _context = context;
         }
 
-        public ViewResult Create() => View();
 
-        [HttpPost]
-        public async Task<IActionResult> Create(AppUserLogin user)
-        {
-            if (ModelState.IsValid)
-            {
-                AppUser appUser = new AppUser
-                {
-                    UserName = user.Name,
-                    Email = user.Email
-                };
+          public ViewResult Create() => View();
 
-                IdentityResult result = await userManager.CreateAsync(appUser, user.Password);
-                if (result.Succeeded)
-                    return RedirectToAction("Index");
-                else
-                {
-                    foreach (IdentityError error in result.Errors)
-                        ModelState.AddModelError("", error.Description);
-                }
-            }
-            return View(user);
-        }
+           [HttpPost]
+           public async Task<IActionResult> Create(AppUserLogin user)
+           {
+               if (ModelState.IsValid)
+               {
+                   AppUser appUser = new AppUser
+                   {
+                       UserName = user.Name,
+                       Email = user.Email
+                   };
+
+                   IdentityResult result = await userManager.CreateAsync(appUser, user.Password);
+                   if (result.Succeeded)
+                       return RedirectToAction("Index");
+                   else
+                   {
+                       foreach (IdentityError error in result.Errors)
+                           ModelState.AddModelError("", error.Description);
+                   }
+               }
+               return View(user);
+           }
         public async Task<IActionResult> Update(string id)
         {
             AppUser user = await userManager.FindByIdAsync(id);

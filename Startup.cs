@@ -97,7 +97,7 @@ namespace FitKitApp
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Objekts}/{action=Index}/{id?}");
+                    pattern: "{controller=Account}/{action=Login}/{id?}");
             });
         }
     }

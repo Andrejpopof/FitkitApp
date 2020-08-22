@@ -244,7 +244,7 @@ namespace FitKitApp.Controllers
 
         public async Task<IActionResult> KorisnikUvid(int? id, string searchStringImeObjekt)
         {
-            if(id== null )
+            if(id==null )
             {
                 return NotFound();
             }

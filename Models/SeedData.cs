@@ -1,4 +1,5 @@
 ﻿using FitKitApp.Data;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -10,7 +11,7 @@ namespace FitKitApp.Models
 {
     public class SeedData
     {
-        public static void Initialize(IServiceProvider serviceProvider)
+            public static void Initialize(IServiceProvider serviceProvider)
         {
             using (var context = new FitKitAppContext(serviceProvider.GetRequiredService<DbContextOptions<FitKitAppContext>>()))
             {
@@ -22,9 +23,11 @@ namespace FitKitApp.Models
                
                 context.Objekt.AddRange(
                     new Objekt {/* Id = 1,*/ Ime = "Лајфстајл-Студио", Kvadratura = 300, Lokacija = "Карпош 3", MaxClients = 50, TipVezbanje = "Боди-билдинг", OtvorZatvor = "Затворено", Coach1Id = context.Coach.Single(d => d.Ime == "Бојан" && d.Prezime == "Илиевски").Id, Coach2Id = context.Coach.Single(d => d.Ime == "Игор" && d.Prezime == "Темелковски").Id },
-                    new Objekt {/*Id=1, */Ime = "Кинетикс", Kvadratura = 120, Lokacija = "Дебар-Маало", MaxClients = 20, TipVezbanje = "Кардио/Функционален", OtvorZatvor = "Отворено", Coach1Id = context.Coach.Single(d => d.Ime == "Марко" && d.Prezime == "Мицевски").Id, Coach2Id = context.Coach.Single(d => d.Ime == "Дарко" && d.Prezime == "Порјазов").Id },
-                    new Objekt {/*Id=1, */Ime = "Кросфит-Скопје", Kvadratura = 95, Lokacija = "Водно", MaxClients = 45, TipVezbanje = "Кросфит", OtvorZatvor = "Затворено", Coach1Id = context.Coach.Single(d => d.Ime == "Бојан" && d.Prezime == "Илиевски").Id, Coach2Id = context.Coach.Single(d => d.Ime == "Игор" && d.Prezime == "Темелковски").Id }
-                   );
+                    new Objekt {/*Id=2, */Ime = "Кинетикс", Kvadratura = 120, Lokacija = "Дебар-Маало", MaxClients = 20, TipVezbanje = "Кардио/Функционален", OtvorZatvor = "Отворено", Coach1Id = context.Coach.Single(d => d.Ime == "Марко" && d.Prezime == "Мицевски").Id, Coach2Id = context.Coach.Single(d => d.Ime == "Дарко" && d.Prezime == "Порјазов").Id },
+                    new Objekt {/*Id=3, */Ime = "Кросфит-Скопје", Kvadratura = 95, Lokacija = "Водно", MaxClients = 45, TipVezbanje = "Кросфит", OtvorZatvor = "Затворено", Coach1Id = context.Coach.Single(d => d.Ime == "Бојан" && d.Prezime == "Илиевски").Id, Coach2Id = context.Coach.Single(d => d.Ime == "Игор" && d.Prezime == "Темелковски").Id }   ,                        
+                    new Objekt {/*Id=1, */Ime = "Фит", Kvadratura = 250, Lokacija = "Дебар-Маало", MaxClients = 70, TipVezbanje = "Боди=билдинг", OtvorZatvor = "Затворено", Coach1Id = context.Coach.Single(d => d.Ime == "Марко" && d.Prezime == "Мицевски").Id, Coach2Id = context.Coach.Single(d => d.Ime == "Бојан" && d.Prezime == "Илиевски").Id }
+
+                    );
                 context.SaveChanges();
 
                 context.Coach.AddRange(
