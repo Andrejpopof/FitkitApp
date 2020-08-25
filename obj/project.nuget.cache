@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VRrjTsBYDC57JNJDnJelcCDondmXlKkmvMc7FfaOcgCLbFI6HdAPL+iGlltio5bQjj0/5U43i+u/NXhPxcT+pg==",
+  "dgSpecHash": "L2NRJw95zztgs02Tbs4HzGcejoXxKNIDCmmyo6NG6pekHqeg8h4P2lQ1DKsHE89VhQnYVsbtXDl7LW/BgciDQQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Andrej\\Desktop\\poslednov2\\FitkitApp\\FitKitApp.csproj",
+  "projectFilePath": "C:\\Users\\Andrej\\Desktop\\poslednoV3\\FitkitApp\\FitKitApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Andrej\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\Andrej\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Andrej\\Desktop\\poslednov2\\FitkitApp\\FitKitApp.csproj": {}
+    "C:\\Users\\Andrej\\Desktop\\poslednoV3\\FitkitApp\\FitKitApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Andrej\\Desktop\\poslednov2\\FitkitApp\\FitKitApp.csproj": {
+    "C:\\Users\\Andrej\\Desktop\\poslednoV3\\FitkitApp\\FitKitApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Andrej\\Desktop\\poslednov2\\FitkitApp\\FitKitApp.csproj",
+        "projectUniqueName": "C:\\Users\\Andrej\\Desktop\\poslednoV3\\FitkitApp\\FitKitApp.csproj",
         "projectName": "FitKitApp",
-        "projectPath": "C:\\Users\\Andrej\\Desktop\\poslednov2\\FitkitApp\\FitKitApp.csproj",
+        "projectPath": "C:\\Users\\Andrej\\Desktop\\poslednoV3\\FitkitApp\\FitKitApp.csproj",
         "packagesPath": "C:\\Users\\Andrej\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Andrej\\Desktop\\poslednov2\\FitkitApp\\obj\\",
+        "outputPath": "C:\\Users\\Andrej\\Desktop\\poslednoV3\\FitkitApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Andrej\\AppData\\Roaming\\NuGet\\NuGet.Config",
